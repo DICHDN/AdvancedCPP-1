@@ -71,7 +71,16 @@ void step_arr_left(int* arr, int size) // сдвиг массива на 1 ша�
     }
     arr[size - 1] = a;
 }
+void step_arr_right(int* arr, int size)
+{
+    int a = arr[size-1];
 
+    for (int i = size-1; i > 0; --i)
+    {
+        arr[i] = arr[i-1];
+    }
+    arr[0] = a;
+}
 
 
 
@@ -103,10 +112,10 @@ int main()
         }
         file.close();
         step_arr_left(mass1, arr1);
-        step_arr_left(mass2, arr2);
+        step_arr_right(mass2, arr2);
         save_file(mass1, arr1, mass2, arr2);
-        delete mass1;
-        delete mass2;
+        delete[] mass1;
+        delete[] mass2;
     }
     else
     {
